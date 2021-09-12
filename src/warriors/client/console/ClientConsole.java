@@ -34,23 +34,23 @@ public class ClientConsole {
 		System.out.println("Entrez votre nom:");
 		String playerName = sc.nextLine();
 		
-		System.out.println("Choisissez votre héro:");
+		System.out.println("Choisissez votre héros:");
 		for(int i = 0; i < warriors.getHeroes().size(); i++) {
-			Hero heroe = warriors.getHeroes().get(i);
-			System.out.println(i+1 + " - " + heroe.getName());
-			System.out.println("    Force d'attaque : " + heroe.getAttackLevel());
-			System.out.println("    Niveau de vie : " + heroe.getLife());
+			Hero hero = warriors.getHeroes().get(i);
+			System.out.println(i+1 + " - " + hero.getName());
+			System.out.println("    Force d'attaque : " + hero.getAttackLevel());
+			System.out.println("    Niveau de vie : " + hero.getLife());
 		}
-		Hero chosenHeroe = warriors.getHeroes().get(Integer.parseInt(sc.nextLine()) - 1);
+		Hero chosenHero = warriors.getHeroes().get(Integer.parseInt(sc.nextLine()) - 1);
 		
 		System.out.println("Choisissez votre map:");
 		for(int i = 0; i < warriors.getMaps().size(); i++) {
 			Map map = warriors.getMaps().get(i);
 			System.out.println(i+1 + " - " + map.getName());
 		}
-		Map choosenMap = warriors.getMaps().get(Integer.parseInt(sc.nextLine()) - 1);
+		Map chosenMap = warriors.getMaps().get(Integer.parseInt(sc.nextLine()) - 1);
 
-		GameState gameState = warriors.createGame(playerName, chosenHeroe, choosenMap);
+		GameState gameState = warriors.createGame(playerName, chosenHero, chosenMap);
 		String gameId = gameState.getGameId();
 
 		while (gameState.getGameStatus() == GameStatus.IN_PROGRESS) {
